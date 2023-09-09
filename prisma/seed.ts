@@ -4,14 +4,14 @@ import bcrypt from "bcryptjs";
 const prisma = new PrismaClient();
 
 async function seed() {
-  const email = "rachel@remix.run";
+  const email = "pain@feature-sliced.design";
 
   // cleanup the existing database
   await prisma.user.delete({ where: { email } }).catch(() => {
     // no worries if it doesn't exist yet
   });
 
-  const hashedPassword = await bcrypt.hash("racheliscool", 10);
+  const hashedPassword = await bcrypt.hash("paindrivendevelopment", 10);
 
   const user = await prisma.user.create({
     data: {
@@ -26,16 +26,46 @@ async function seed() {
 
   await prisma.note.create({
     data: {
-      title: "My first note",
-      body: "Hello, world!",
+      title: "Shopping List",
+      body: `* Bag of milk
+* 3 bananas
+* Vegan burgers
+
+Don’t forget the vegan burgers, that’s important!`,
+      createdAt: new Date("2023-04-27"),
       userId: user.id,
     },
   });
 
   await prisma.note.create({
     data: {
-      title: "My second note",
-      body: "Hello, world!",
+      title: "Bucket List",
+      body: `* [ ] Skydiving
+* [ ] Learn to play the piano
+* [ ] Visit the Great Wall of China
+* [ ] Learn to speak Spanish
+* [ ] Learn to speak Mandarin
+* [ ] Try a vegan diet for 30 days`,
+      createdAt: new Date("2000-04-01"),
+      userId: user.id,
+    },
+  });
+
+  await prisma.note.create({
+    data: {
+      title: "ArrayList",
+      body: `\`\`\`java
+public class ArrayList<Element> implements List<Element> {
+  private Element[] elements;
+  private int size;
+
+  public ArrayList() {
+    elements = new Element[10];
+    size = 0;
+  }
+}
+\`\`\``,
+      createdAt: new Date("1970-01-01"),
       userId: user.id,
     },
   });
