@@ -1,1 +1,1 @@
-export { NoteListPage as default } from "~/pages/note-list";
+export { NoteListPage as default, loader } from "~/pages/note-list";
