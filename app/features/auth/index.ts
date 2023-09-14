@@ -1,1 +1,2 @@
-export { requireUserId, loadCurrentUser } from "./api.server";
+export { requireUserId } from "./api/requireUserId";
+export { loadCurrentUser } from "./api/loadCurrentUser";
