@@ -16,6 +16,8 @@ export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
 ];
 
+export { loadCurrentUser as loader } from "~/features/auth";
+
 export default function App() {
   return (
     <html lang="en" className="h-full">
