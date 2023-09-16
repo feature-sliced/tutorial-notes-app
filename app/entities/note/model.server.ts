@@ -8,3 +8,15 @@ export function getNoteListItems(userId: User["id"]) {
     where: { userId },
   });
 }
+
+export function getNote({
+  id,
+  userId,
+}: Pick<Note, "id"> & {
+  userId: User["id"];
+}) {
+  return prisma.note.findFirst({
+    select: { id: true, body: true, createdAt: true, title: true },
+    where: { id, userId },
+  });
+}

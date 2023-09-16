@@ -1,2 +1,2 @@
 export { NoteCard } from "./ui/NoteCard";
-export { getNoteListItems } from "./model.server";
+export { getNoteListItems, getNote } from "./model.server";
