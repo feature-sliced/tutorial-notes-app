@@ -1,1 +1,1 @@
-export { EditNotePage as default, loader } from "~/pages/edit-note";
+export { EditNotePage as default, loader, action } from "~/pages/edit-note";

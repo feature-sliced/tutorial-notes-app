@@ -20,3 +20,17 @@ export function getNote({
     where: { id, userId },
   });
 }
+
+export function updateNote({
+  title,
+  body,
+  id,
+  userId,
+}: Pick<Note, "title" | "body" | "id"> & {
+  userId: User["id"];
+}) {
+  return prisma.note.update({
+    where: { id, userId },
+    data: { title, body },
+  });
+}
