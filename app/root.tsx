@@ -17,6 +17,7 @@ export const links: LinksFunction = () => [
 ];
 
 export { loadCurrentUser as loader } from "~/features/auth";
+export { action } from "~/widgets/bottom-bar";
 
 export default function App() {
   return (

@@ -34,3 +34,17 @@ export function updateNote({
     data: { title, body },
   });
 }
+
+export function createNote(userId: User["id"]) {
+  return prisma.note.create({
+    data: {
+      title: "",
+      body: "",
+      user: {
+        connect: {
+          id: userId,
+        },
+      },
+    },
+  });
+}
