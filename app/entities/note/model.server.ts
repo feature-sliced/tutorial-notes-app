@@ -48,3 +48,12 @@ export function createNote(userId: User["id"]) {
     },
   });
 }
+
+export function deleteNote({
+  id,
+  userId,
+}: Pick<Note, "id"> & { userId: User["id"] }) {
+  return prisma.note.delete({
+    where: { id, userId },
+  });
+}
