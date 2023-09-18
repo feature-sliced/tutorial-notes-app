@@ -13,7 +13,7 @@ export function NoteCard({ id, title, createdAt }: NoteCardProps) {
   return (
     <Link to={`/notes/${id}`}>
       <Card>
-        <h1 className="text-xl font-semibold">{title}</h1>
+        <h1 className="text-xl font-semibold">{title || "Untitled"}</h1>
         <CreatedAt date={createdAt} />
       </Card>
     </Link>
