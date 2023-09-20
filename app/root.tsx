@@ -1,5 +1,5 @@
 import { cssBundleHref } from "@remix-run/css-bundle";
-import type { LinksFunction } from "@remix-run/node";
+import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -16,6 +16,8 @@ export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
 ];
 
+export const meta: MetaFunction = () => [{ title: "FSD Notes" }];
+
 export { loadCurrentUser as loader } from "~/features/auth";
 export { action } from "~/widgets/bottom-bar";
 
@@ -25,6 +27,7 @@ export default function App() {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
+        {/* <title>FSD Notes</title> */}
         <Meta />
         <Links />
       </head>

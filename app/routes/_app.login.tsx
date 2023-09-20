@@ -1,1 +1,1 @@
-export { LoginPage as default, action } from "~/pages/login";
+export { LoginPage as default, action, meta } from "~/pages/login";
