@@ -1,7 +1,6 @@
 import { Link } from "@remix-run/react";
 
-import { Card } from "~/shared/ui";
-import { CreatedAt } from "./CreatedAt";
+import { Card, dateFormat } from "~/shared/ui";
 
 interface NoteCardProps {
   id: string;
@@ -14,7 +13,9 @@ export function NoteCard({ id, title, createdAt }: NoteCardProps) {
     <Link to={`/notes/${id}`}>
       <Card>
         <h1 className="text-xl font-semibold">{title || "Untitled"}</h1>
-        <CreatedAt date={createdAt} />
+        <p className="text-neutral-600 dark:text-neutral-100">
+          Created on {dateFormat.format(createdAt)}
+        </p>
       </Card>
     </Link>
   );

@@ -1,6 +1,6 @@
 import { json, type LoaderFunctionArgs } from "@remix-run/node";
 
-import { getUserById } from "~/entities/user";
+import { prisma } from "~/db.server";
 import { getUserIdFromSession } from "../model.server";
 import { logout } from "./logout";
 
@@ -11,7 +11,7 @@ export async function loadCurrentUser({ request }: LoaderFunctionArgs) {
     return json({ user: null });
   }
 
-  const user = await getUserById(userId);
+  const user = await prisma.user.findUnique({ where: { id: userId } });
   if (user === null) {
     throw await logout(request);
   }

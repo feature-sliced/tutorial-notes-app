@@ -2,7 +2,7 @@ import type { Note, User } from "@prisma/client";
 import { json, redirect } from "@remix-run/node";
 import invariant from "tiny-invariant";
 
-import { updateNote } from "~/entities/note";
+import { prisma } from "~/db.server";
 
 export async function handleUpdate(
   formFields: Record<string, FormDataEntryValue>,
@@ -14,11 +14,9 @@ export async function handleUpdate(
   invariant(typeof body === "string", "body should be a string");
 
   try {
-    await updateNote({
-      title,
-      body,
-      id: noteId,
-      userId,
+    await prisma.note.update({
+      where: { id: noteId, userId },
+      data: { title, body },
     });
 
     return json({ values: { title, body } });

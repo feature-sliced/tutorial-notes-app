@@ -3,7 +3,7 @@ import type { Note } from "@prisma/client";
 import { Form, useActionData, useSubmit } from "@remix-run/react";
 import { useDebouncedCallback } from "use-debounce";
 
-import { CreatedAt } from "~/entities/note";
+import { dateFormat } from "~/shared/ui";
 import { MarkdownEditor } from "./MarkdownEditor";
 import type { handleUpdate } from "../api/handleUpdate";
 
@@ -36,7 +36,9 @@ export function NoteEditor({
           className="bg-transparent outline-none placeholder:text-neutral-300 dark:placeholder:text-neutral-400"
         />
       </h1>
-      <CreatedAt date={createdAt} />
+      <p className="text-neutral-600 dark:text-neutral-100">
+        Created on {dateFormat.format(createdAt)}
+      </p>
       <div className="flex-1 prose prose-neutral dark:prose-invert max-w-none prose-p:my-2 whitespace-pre-wrap">
         <MarkdownEditor
           name="body"

@@ -1,12 +1,17 @@
 import { type LoaderFunctionArgs, json } from "@remix-run/node";
 
 import { requireUserId } from "~/features/auth";
-import { getNoteListItems } from "~/entities/note";
+import { prisma } from "~/db.server";
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const userId = await requireUserId(request);
 
-  return json({
-    noteListItems: await getNoteListItems(userId),
+  const noteListItems = await prisma.note.findMany({
+    select: { id: true, title: true, createdAt: true },
+    orderBy: { createdAt: "desc" },
+    where: { userId },
   });
+
+  return json({ noteListItems });
 }
+

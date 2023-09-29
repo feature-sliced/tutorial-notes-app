@@ -1,6 +1,6 @@
 import { LoginForm, LogoutButton } from "~/features/auth";
 import { CreateNoteButton } from "~/features/create-note";
-import { useCurrentUser } from "~/entities/user";
+import { useCurrentUser } from "../model/useCurrentUser";
 
 export function BottomBar() {
   const className = "p-6 bg-neutral-300 dark:bg-neutral-500";

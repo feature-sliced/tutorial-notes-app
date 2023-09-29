@@ -1,6 +1,6 @@
 import { useLoaderData } from "@remix-run/react";
 
-import { NoteCard } from "~/entities/note";
+import { NoteCard } from "./NoteCard";
 import type { loader } from "../api/loader";
 
 export function NoteListPage() {
